@@ -17,6 +17,8 @@ config.tests/*/*/*
 !config.tests/*/*/*[.]*
 config.tests/*/*/*[.]app
 
+*/build/*
+
 callgrind.out.*
 pcviewer.cfg
 *~
@@ -48,6 +50,7 @@ Makefile*
 !qmake/Makefile.unix
 *.prl
 *.app
+*.txt.user*
 *.pro.user*
 *.qmlproject.user*
 *.gcov
