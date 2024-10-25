@@ -1,3 +1,4 @@
+#include <QtDataVisualization/qutils.h>
 #include <QtGui/qguiapplication.h>
 #include <QtQml/qqmlengine.h>
 #include <QtQuick/qquickview.h>
@@ -13,6 +14,9 @@ int main(int argc, char *argv[])
 
     QQuickView viewer;
     QObject::connect(viewer.engine(), &QQmlEngine::quit, &viewer, &QWindow::close);
+
+    // Enable antialiasing in direct rendering mode
+    viewer.setFormat(qDefaultSurfaceFormat(true));
 
     viewer.setTitle("Hello Qt Academy with QtDataVisualization!");
     viewer.setColor(QColor("black"));

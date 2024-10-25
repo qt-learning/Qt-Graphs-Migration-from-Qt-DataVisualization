@@ -73,8 +73,12 @@ Item {
             axisY.max: rangeToggle.checked ? 306.8 : 1000
             // set camera preset
             cameraPreset: Graphs3D.CameraPreset.IsometricRight
+            // limit camera rotation
+            wrapCameraXRotation: false
             // disable shadows
             shadowQuality: Graphs3D.ShadowQuality.None
+            // set rendering mode
+            renderingMode: Graphs3D.RenderingMode.DirectToBackground
 
             Surface3DSeries {
                 id: heightMapSeries
@@ -139,6 +143,7 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ""
+                            surface.cameraPreset = Graphs3D.CameraPreset.IsometricRight
                         }
                     }
                 }
@@ -147,6 +152,7 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111R-peruskarttarasteri.jpg"
+                            surface.cameraPreset = Graphs3D.CameraPreset.DirectlyAbove
                         }
                     }
                 }
@@ -155,6 +161,7 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-ortokuva.jpg"
+                            surface.cameraPreset = Graphs3D.CameraPreset.IsometricLeftHigh
                         }
                     }
                 }
@@ -163,6 +170,7 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-korkeusmalli.jpg"
+                            surface.cameraPreset = Graphs3D.CameraPreset.RightHigh
                         }
                     }
                 }
@@ -171,8 +179,25 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-rinnevarjoste.jpg"
+                            surface.cameraPreset = Graphs3D.CameraPreset.Left
                         }
                     }
+                }
+            }
+
+            Column {
+                anchors.top: modeButtons.bottom
+
+                Label {
+                    text: "Light Intensity"
+                }
+
+                // slider to adjust light strength
+                Slider {
+                    from: 0.5
+                    to: 10.0
+                    value: surface.lightStrength
+                    onValueChanged: surface.lightStrength = value
                 }
             }
         }

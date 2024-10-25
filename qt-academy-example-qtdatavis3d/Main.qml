@@ -53,6 +53,7 @@ Item {
             width: rootItem.width * 0.9
             height: rootItem.height
             theme: Theme3D {
+                id: customTheme
                 // theme preset; we want a dark theme
                 type: Theme3D.ThemeEbony
                 // hide labels
@@ -75,8 +76,12 @@ Item {
             axisY.max: rangeToggle.checked ? 306.8 : 1000
             // set camera preset
             scene.activeCamera.cameraPreset: Camera3D.CameraPresetIsometricRight
+            // limit camera rotation
+            scene.activeCamera.wrapXRotation: false
             // disable shadows
             shadowQuality: AbstractGraph3D.ShadowQualityNone
+            // set rendering mode
+            renderingMode: AbstractGraph3D.RenderDirectToBackground_NoClear
 
             Surface3DSeries {
                 id: heightMapSeries
@@ -141,6 +146,7 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ""
+                            surface.scene.activeCamera.cameraPreset = Camera3D.CameraPresetIsometricRight
                         }
                     }
                 }
@@ -149,6 +155,7 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111R-peruskarttarasteri.jpg"
+                            surface.scene.activeCamera.cameraPreset = Camera3D.CameraPresetDirectlyAbove
                         }
                     }
                 }
@@ -157,6 +164,7 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-ortokuva.jpg"
+                            surface.scene.activeCamera.cameraPreset = Camera3D.CameraPresetIsometricLeftHigh
                         }
                     }
                 }
@@ -165,6 +173,7 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-korkeusmalli.jpg"
+                            surface.scene.activeCamera.cameraPreset = Camera3D.CameraPresetRightHigh
                         }
                     }
                 }
@@ -173,8 +182,25 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-rinnevarjoste.jpg"
+                            surface.scene.activeCamera.cameraPreset = Camera3D.CameraPresetLeft
                         }
                     }
+                }
+            }
+
+            Column {
+                anchors.top: modeButtons.bottom
+
+                Label {
+                    text: "Light Intensity"
+                }
+
+                // slider to adjust light strength
+                Slider {
+                    from: 0.5
+                    to: 10.0
+                    value: customTheme.lightStrength
+                    onValueChanged: customTheme.lightStrength = value
                 }
             }
         }
