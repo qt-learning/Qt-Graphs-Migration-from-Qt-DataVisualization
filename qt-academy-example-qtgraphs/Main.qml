@@ -87,7 +87,7 @@ Item {
                 // draw only surface, no wireframe
                 drawMode: Surface3DSeries.DrawSurface
                 // replace selection pointer with a really small one
-                mesh: Abstract3DSeries.Mesh.Minimal
+                mesh: Abstract3DSeries.Mesh.UserDefined
                 userDefinedMesh: ":/assets/selectionpointer.mesh"
                 // hide item selection label
                 itemLabelVisible: false
