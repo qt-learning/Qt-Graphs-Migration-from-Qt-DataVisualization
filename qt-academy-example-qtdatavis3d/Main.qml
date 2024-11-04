@@ -89,9 +89,6 @@ Item {
                 flatShadingEnabled: false
                 // draw only surface, no wireframe
                 drawMode: Surface3DSeries.DrawSurface
-                // replace selection pointer with a really small one
-                mesh: Abstract3DSeries.MeshUserDefined
-                userDefinedMesh: ":/assets/selectionpointer.obj"
                 // hide item selection label
                 itemLabelVisible: false
 
