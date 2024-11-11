@@ -4,9 +4,9 @@ project(qt-academy-example-qtdatavis3d VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.8 REQUIRED COMPONENTS Quick DataVisualization)
 
-qt_standard_project_setup(REQUIRES 6.5)
+qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(appqt-academy-example-qtdatavis3d
     main.cpp
@@ -55,7 +55,9 @@ set_target_properties(appqt-academy-example-qtdatavis3d PROPERTIES
 )
 
 target_link_libraries(appqt-academy-example-qtdatavis3d
-    PRIVATE Qt6::Quick
+    PRIVATE
+    Qt6::Quick
+    Qt6::DataVisualization
 )
 
 include(GNUInstallDirs)
