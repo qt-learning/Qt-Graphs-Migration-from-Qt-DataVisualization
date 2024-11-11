@@ -40,6 +40,7 @@ qt_add_qml_module(appqt-academy-example-qtgraphs
         Marker.qml
     RESOURCES
         assets/marker.mesh
+        assets/selectionpointer.mesh
         ${shared_resource_files}
 )
 

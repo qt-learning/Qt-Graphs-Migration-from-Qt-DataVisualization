@@ -40,6 +40,7 @@ qt_add_qml_module(appqt-academy-example-qtdatavis3d
         Marker.qml
     RESOURCES
         assets/marker.obj
+        assets/selectionpointer.obj
         ${shared_resource_files}
 )
 
