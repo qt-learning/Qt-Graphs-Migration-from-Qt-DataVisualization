@@ -83,6 +83,21 @@ Item {
             // set rendering mode
             renderingMode: AbstractGraph3D.RenderDirectToBackground_NoClear
 
+            // animate the camera transitions
+            Behavior on scene.activeCamera.xRotation {
+                NumberAnimation {
+                    duration: 1000
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
+            Behavior on scene.activeCamera.yRotation {
+                NumberAnimation {
+                    duration: 1000
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
             Surface3DSeries {
                 id: heightMapSeries
                 // use smooth shading
@@ -146,7 +161,8 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ""
-                            surface.scene.activeCamera.cameraPreset = Camera3D.CameraPresetIsometricRight
+                            surface.scene.activeCamera.xRotation = -45
+                            surface.scene.activeCamera.yRotation = 22.5
                         }
                     }
                 }
@@ -155,7 +171,8 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111R-peruskarttarasteri.jpg"
-                            surface.scene.activeCamera.cameraPreset = Camera3D.CameraPresetDirectlyAbove
+                            surface.scene.activeCamera.xRotation = 9
+                            surface.scene.activeCamera.yRotation = 90
                         }
                     }
                 }
@@ -164,7 +181,8 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-ortokuva.jpg"
-                            surface.scene.activeCamera.cameraPreset = Camera3D.CameraPresetIsometricLeftHigh
+                            surface.scene.activeCamera.xRotation = 45
+                            surface.scene.activeCamera.yRotation = 45
                         }
                     }
                 }
@@ -173,7 +191,8 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-korkeusmalli.jpg"
-                            surface.scene.activeCamera.cameraPreset = Camera3D.CameraPresetRightHigh
+                            surface.scene.activeCamera.xRotation = -90
+                            surface.scene.activeCamera.yRotation = 45
                         }
                     }
                 }
@@ -182,7 +201,8 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-rinnevarjoste.jpg"
-                            surface.scene.activeCamera.cameraPreset = Camera3D.CameraPresetLeft
+                            surface.scene.activeCamera.xRotation = 90
+                            surface.scene.activeCamera.yRotation = 22.5
                         }
                     }
                 }

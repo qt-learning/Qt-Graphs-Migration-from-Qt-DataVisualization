@@ -80,6 +80,21 @@ Item {
             // set rendering mode
             renderingMode: Graphs3D.RenderingMode.DirectToBackground
 
+            // animate the camera transitions
+            Behavior on cameraYRotation {
+                NumberAnimation {
+                    duration: 1000
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
+            Behavior on cameraXRotation {
+                NumberAnimation {
+                    duration: 1000
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
             Surface3DSeries {
                 id: heightMapSeries
                 // use smooth shading
@@ -143,7 +158,8 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ""
-                            surface.cameraPreset = Graphs3D.CameraPreset.IsometricRight
+                            surface.cameraXRotation = -45
+                            surface.cameraYRotation = 22.5
                         }
                     }
                 }
@@ -152,7 +168,8 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111R-peruskarttarasteri.jpg"
-                            surface.cameraPreset = Graphs3D.CameraPreset.DirectlyAbove
+                            surface.cameraXRotation = 0
+                            surface.cameraYRotation = 90
                         }
                     }
                 }
@@ -161,7 +178,8 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-ortokuva.jpg"
-                            surface.cameraPreset = Graphs3D.CameraPreset.IsometricLeftHigh
+                            surface.cameraXRotation = 45
+                            surface.cameraYRotation = 45
                         }
                     }
                 }
@@ -170,7 +188,8 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-korkeusmalli.jpg"
-                            surface.cameraPreset = Graphs3D.CameraPreset.RightHigh
+                            surface.cameraXRotation = -90
+                            surface.cameraYRotation = 45
                         }
                     }
                 }
@@ -179,7 +198,8 @@ Item {
                     onCheckedChanged: {
                         if (checked) {
                             heightMapSeries.textureFile = ":/T5111G-rinnevarjoste.jpg"
-                            surface.cameraPreset = Graphs3D.CameraPreset.Left
+                            surface.cameraXRotation = 90
+                            surface.cameraYRotation = 22.5
                         }
                     }
                 }
